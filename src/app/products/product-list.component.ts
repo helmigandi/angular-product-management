@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
+import { ProductService } from './product.service';
 
 @Component({
   selector: 'pm-products',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
+  providers: [ProductService]
 })
 export class ProductListComponent implements OnInit {
   pageTitle: string = 'Product List!';
@@ -12,6 +14,9 @@ export class ProductListComponent implements OnInit {
   imageMargin: number = 2;
   showImage: boolean = false;
   filteredProducts: IProduct[] = [];
+  products: IProduct[] = [];
+
+  constructor(private productService: ProductService) {}
 
   private _listFilter: string = '';
 
@@ -24,10 +29,6 @@ export class ProductListComponent implements OnInit {
     this._listFilter = v;
     this.filteredProducts = this.performFilter(v);
   }
-
-  products: IProduct[] = [
-
-  ];
 
   performFilter(filterBy: string): IProduct[] {
     filterBy = filterBy.toLocaleLowerCase();
@@ -46,6 +47,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("GET IN INIT");
-    this.listFilter = '';
+    this.products = this.productService.getProducts();
+    this.filteredProducts = this.products;
   }
 }
