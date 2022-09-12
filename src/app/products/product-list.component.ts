@@ -26,26 +26,7 @@ export class ProductListComponent implements OnInit {
   }
 
   products: IProduct[] = [
-    {
-      id: 1,
-      productName: 'Macbook Pro M2',
-      productCode: 'N22-0001',
-      releaseDate: 'May 21, 2022',
-      description: 'The new Macbook Pro with M2 chip',
-      price: 25_000_000,
-      starRating: 4.8,
-      imageUrl: 'assets/image/mbp2.jpg',
-    },
-    {
-      id: 2,
-      productName: 'Dell XPS 13 Plus',
-      productCode: 'N22-0002',
-      releaseDate: 'August 10, 2022',
-      description: 'The new model of XPS 13',
-      price: 19_999_999,
-      starRating: 4.1,
-      imageUrl: 'assets/image/dell-xps.jpg',
-    },
+
   ];
 
   performFilter(filterBy: string): IProduct[] {
@@ -57,6 +38,10 @@ export class ProductListComponent implements OnInit {
 
   toggleImage(): void {
     this.showImage = !this.showImage;
+  }
+
+  onRatingClicked(message: string): void {
+    this.pageTitle = "Product list: " + message;
   }
 
   ngOnInit(): void {
