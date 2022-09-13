@@ -11,7 +11,6 @@ import { Component } from '@angular/core';
           routerLink="/welcome"
           [ngClass]="{ active: isValue === 1 }"
           (click)="toggle(1)"
-          )
           >Home</a
         >
         <a
@@ -19,12 +18,12 @@ import { Component } from '@angular/core';
           routerLink="/products"
           [ngClass]="{ active: isValue === 2 }"
           (click)="toggle(2)"
-          )
           >Product list</a
         >
         <!-- <a class="nav-link" routerLink="/products">Product list</a> -->
       </ul>
     </nav>
+    <br />
     <div class="container">
       <router-outlet></router-outlet>
     </div>
